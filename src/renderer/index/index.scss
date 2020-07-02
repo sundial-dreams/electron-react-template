@@ -1,0 +1,131 @@
+@import "~resources/style/reset.global";
+
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+.page1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    color: black;
+    font-size: 20px;
+  }
+
+  button {
+    border-radius: 0;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, .2);
+    color: #999999;
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .calc_box {
+    margin: 20px auto 0 auto;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+
+
+    input {
+      width: 100px;
+      height: 24px;
+      background: transparent;
+      outline: none;
+      text-align: center;
+      color: #cccccc;
+      border: none;
+    }
+
+    .input_value {
+      margin-bottom: 10px;
+
+      input {
+        background: rgba(0, 0, 0, .1);
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, .3);
+        border-radius: 5px;
+        margin: 0 5px 0 5px;
+      }
+    }
+
+
+    .result {
+      margin-top: 10px;
+
+      input {
+        font-size: 24px;
+      }
+    }
+
+    button {
+      background: cornflowerblue;
+      color: white;
+      width: 90px;
+      height: 24px;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+  }
+
+  button.next_btn {
+    font-size: 14px;
+    width: 80px;
+    height: 24px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+  }
+}
+
+.page2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  button {
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, .2);
+    font-size: 14px;
+    color: #cccccc;
+  }
+
+  .counter_box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+
+    span {
+      display: inline-block;
+      width: 30px;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      font-size: 24px;
+    }
+  }
+
+  button.back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 60px;
+    height: 24px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+  }
+}

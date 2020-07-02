@@ -1,0 +1,120 @@
+{
+  "name": "electron-react-build",
+  "version": "1.0.0",
+  "description": "it is test",
+  "author": "sundial dreams",
+  "license": "ISC",
+  "main": "dist/main/main.prod.js",
+  "scripts": {
+    "build-main": "cross-env NODE_ENV=production webpack --config webpack.main.prod.config.js",
+    "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.prod.config.js",
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "start-main": "electron ./dist/main/main.prod.js",
+    "dev-main": "cross-env NODE_ENV=development webpack --config webpack.main.dev.config.js && electron ./dist/main/main.dev.js",
+    "dev-renderer": "cross-env NODE_ENV=development webpack-dev-server --config webpack.renderer.dev.config.js",
+    "dev": "npm run dev-renderer",
+    "package": "npm run build && electron-builder build --publish never",
+    "package-win": "npm run build && electron-builder build --win --x64",
+    "package-linux": "npm run build && electron-builder build --linux",
+    "package-mac": "npm run build && electron-builder build --mac"
+  },
+  "build": {
+    "productName": "Electron App",
+    "appId": "electron.app",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "resources/",
+      "native/",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg",
+      "icon": "./resources/icons/app.icns"
+    },
+    "dmg": {
+      "backgroundColor": "#ffffff",
+      "icon": "./resources/icons/app.icns",
+      "iconSize": 80,
+      "title": "Electron App"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    },
+    "linux": {
+      "icon": "./resources/icons/app.png",
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "./resources/icons",
+      "output": "release"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-decorators": "^7.10.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.10.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-react-constant-elements": "^7.10.1",
+    "@babel/plugin-transform-react-inline-elements": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
+    "@types/electron": "^1.6.10",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/node": "^14.0.14",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router": "^5.1.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/redux": "^3.6.0",
+    "@types/webpack": "^4.41.18",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.6.0",
+    "devtron": "^1.4.0",
+    "electron": "^9.0.5",
+    "electron-builder": "^22.7.0",
+    "electron-devtools-installer": "^3.1.0",
+    "file-loader": "^6.0.0",
+    "history": "^5.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-addon-api": "^3.0.0",
+    "node-loader": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "typescript": "^3.9.5",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
+  }
+}
